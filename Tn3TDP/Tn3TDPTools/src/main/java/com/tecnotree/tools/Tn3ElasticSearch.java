@@ -116,7 +116,14 @@ public class Tn3ElasticSearch {
 		System.out.println(" - " + field + " " +(String) Request.get(field));
 		return Request.get(field) != null ? (String) Request.get(field) : "blank";
     }
-    
+	
+	public String getDataRequestJsonMqBulkData(SearchHit searchH) {
+    	String requestJsonMqBulkData = (String) searchH.getSourceAsMap().get("requestJsonMqBulkData");
+    	//System.out.println("requestJsonMqBulkData: " + requestJsonMqBulkData);
+		
+		return requestJsonMqBulkData;
+    }
+	    
     public String getCodeQuery(SearchHit searchH, String field) {
     	@SuppressWarnings("rawtypes")
 		HashMap response = (HashMap) searchH.getSourceAsMap().get("response");
